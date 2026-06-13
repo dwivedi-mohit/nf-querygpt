@@ -19,10 +19,12 @@ def run_startup_checks() -> list[dict]:
 
 def _check_env_file() -> dict:
     exists = os.path.exists(".env")
+    has_env_vars = bool(os.getenv("GROQ_API_KEY"))
+    passed = exists or has_env_vars
     return {
-        "check": "Environment file (.env)",
-        "passed": exists,
-        "message": "" if exists else "Create a .env file in the project root. Copy .env.template and fill in your API keys.",
+        "check": "Environment configuration",
+        "passed": passed,
+        "message": "" if passed else "Create a .env file or set secrets in your deployment platform.",
     }
 
 
