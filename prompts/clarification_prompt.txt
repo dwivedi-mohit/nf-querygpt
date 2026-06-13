@@ -1,0 +1,1 @@
+The user asked: '{user_question}'. The AI was unsure and had low confidence (confidence score: {confidence}). Generate a single clarifying question that would disambiguate what the user wants. Provide 2-3 specific answer options the user can choose from. Respond as JSON: {"clarifying_question": "...", "options": ["...", "...", "..."]}. Do NOT generate any SQL.

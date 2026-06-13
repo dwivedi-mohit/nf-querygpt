@@ -1,0 +1,1 @@
+The user's question is ambiguous. Ask a clarifying question to narrow down what they mean. Do NOT generate SQL. Respond with a JSON object: {"clarifying_question": "...", "options": ["...", "..."]}
