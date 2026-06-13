@@ -34,10 +34,17 @@ def process_question(user_question: str, db_path: str, clarification_answer: str
     confidence = llm_result.get("confidence", 5)
 
     if not sql:
+        tables = []
+        for line in schema_context.splitlines():
+            if line.startswith("### "):
+                table_name = line.replace("### ", "").split(" (")[0]
+                tables.append(table_name)
+        table_list = ", ".join(tables) if tables else "users, profiles, matches, etc."
+
         return {
             "type": "error",
             "data": {
-                "message": "I couldn't generate a query from your question. Please rephrase with more detail.",
+                "message": f"I couldn't generate a query from your question. Available tables are: {table_list}. Try asking about users, matches, subscriptions, or payments.",
                 "error_type": "no_sql",
             },
         }

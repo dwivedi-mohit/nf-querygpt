@@ -36,7 +36,7 @@ def generate_sql(user_question: str, schema_context: str) -> dict:
     if not isinstance(result, dict):
         return {
             "sql": "",
-            "explanation": "Could not understand the question. Please rephrase.",
+            "explanation": "I couldn't understand that question. Please try asking about users, matches, subscriptions, payments, or other NikahForever data.",
             "confidence": 5,
         }
 
